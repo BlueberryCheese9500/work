@@ -56,9 +56,34 @@ void RR(Queue* wait_queue, Queue* ready_queue)
   Process* current = NULL;
   setCursorMove(xcur,ycur);
   
+  // DEBUG
+  Process* head = NULL;
   // RR 찍기 
-  while(time < total_service_time && wait_queue->head != NULL)
+  while(time <= total_service_time && wait_queue->head != NULL)
   {
+  /*  // 나타난 프로세스를 순차적으로 큐에 삽입
+    // 단 wait_queue 상태는 도착 시간대로 정렬 되어있다고 가정
+    while(time >= wait_queue->head->arrival_time && wait_queue->head != NULL)
+      push(ready_queue, pop(wait_queue));
+    
+    for(head= ready_queue->head; head!=NULL;head=head->next)
+      printf("%c",head->name);
+    // 준비 큐에서 프로세스 꺼내서 실행시킴
+    current = pop(ready_queue);
+       // 프로세스가 실행될 게 남아있을 경우
+    if(current->service_time >= quantum )
+    {
+      printService(current->order, quantum);
+      // 프로세스 남은 실행시간 갱신
+      current->service_time -= quantum;
+      push(ready_queue,current);
+    }
+    else
+    {
+      printService(current->order,current->service_time);
+      free(current);
+    }
+    */
     time += quantum;
   }
 }

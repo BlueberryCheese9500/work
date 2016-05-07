@@ -60,7 +60,7 @@ int main(void)
   // 스케줄링 정책 모두 실행
   for(i=0; i < policy_count ;i++)
   {
-    simulater[0].scheduling(wait_queue, ready_queue);
+    simulater[i].scheduling(wait_queue, ready_queue);
     default_wait_queue(wait_queue);
   }
   // 커서 제자리에
