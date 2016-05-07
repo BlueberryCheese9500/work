@@ -1,5 +1,5 @@
 #include"../include/process_queue.h"
-
+// 프로세스를 복사하여 새로 하나 만들어 카피본 반환
 Process* copy_Process(Process* src)
 {
   if(src == NULL)

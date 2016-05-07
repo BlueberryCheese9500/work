@@ -1,11 +1,15 @@
 //#include"../include/process_queue.h"
 #include"../include/scheduling.h"
+
+// 스케줄링 정책 관련 구조체
 typedef struct Scheduling_Policy
 {
   char name[10];
   void(*scheduling)();
+  int quantum;
 }Scheduling_Policy;
 
+// 큐를 초기 상태로 복원
 void default_wait_queue(Queue* wait_queue)
 {
  // +additional : 프로세스 삽입 방식 개선.. 
@@ -18,7 +22,7 @@ void default_wait_queue(Queue* wait_queue)
 
 int main(void)
 {
-  Scheduling_Policy simulater[3] = {{"FCFS",FCFS},{"RR",RR},{"HRRN",HRRN}};
+  Scheduling_Policy simulater[4] = {{"FCFS",FCFS,0},{"RR(q=1)" ,RR,1},{"RR(q=4)",RR,4},{"HRRN",HRRN,0}};
   
   Queue *ready_queue = new_Queue();	//준비상태 큐 생성
   Queue *wait_queue = new_Queue();	//대기상태 큐 생성
@@ -26,7 +30,6 @@ int main(void)
   int i = 0, j = 0;
   int policy_count = sizeof(simulater)/sizeof(Scheduling_Policy);
   int process_count = 5;
- 
   Process *head = NULL;	//프로세스 구조체 형의 head 생성, 초기화
 
   if(ready_queue == NULL || wait_queue == NULL)
@@ -63,9 +66,11 @@ int main(void)
   // 스케줄링 정책 모두 실행
   for(i=0; i < policy_count ;i++)
   {
+    quantum = simulater[i].quantum;
     simulater[i].scheduling(wait_queue, ready_queue);
     default_wait_queue(wait_queue);
   }
   // 커서 제자리에
-  setCursorMove(0,25);
+  setCursorMove(0,32);
+  ProcessSetTable(wait_queue, ready_queue);	//Process set 출력
 }
