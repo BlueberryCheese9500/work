@@ -9,11 +9,11 @@ typedef struct Scheduling_Policy
 void default_wait_queue(Queue* wait_queue)
 {
  // +additional : 프로세스 삽입 방식 개선.. 
-  push(wait_queue,new_Process('A',1,3,0));
+  push(wait_queue,new_Process('A',0,3,0));
   push(wait_queue,new_Process('B',2,6,1));
   push(wait_queue,new_Process('C',4,4,2));
-  push(wait_queue,new_Process('D',10,5,3));
-  push(wait_queue,new_Process('E',17,2,4));
+  push(wait_queue,new_Process('D',6,5,3));
+  push(wait_queue,new_Process('E',8,2,4));
 }
 
 int main(void)
@@ -58,7 +58,7 @@ int main(void)
   }
    
   // 스케줄링 정책 모두 실행
-  for(i=0; i < policy_count ;i++)
+  for(i = 0; i < policy_count ;i++)
   {
     simulater[i].scheduling(wait_queue, ready_queue);
     default_wait_queue(wait_queue);
