@@ -4,7 +4,7 @@ int xcur;
 int ycur;
 int current_time;
 int total_service_time;
-
+int time_axis;
 // 커서이동하여 출력
 void setCursorMove(int XPos, int YPos);
 void FCFS(Queue* wait_queue, Queue* ready_queue);

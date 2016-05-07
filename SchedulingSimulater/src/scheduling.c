@@ -30,19 +30,19 @@ void printService(int current_process, int service_time)
 
 void FCFS(Queue* wait_queue, Queue* ready_queue)
 {
-  int time = 0;
+  int time = time_axis;
   xcur = start;
   ycur = 3;
   Process* current = NULL;
 
   setCursorMove(xcur,ycur);  
   
-  printf("hello");
   // FCFS 찍기 
-  while(time < total_service_time && wait_queue->head!=NULL)
+  while(time < total_service_time+time_axis && wait_queue->head!=NULL)
   {
     current = pop(wait_queue);
     printService(current->order, current->service_time);
+
     time += current->service_time;
     free(current);
   }
@@ -50,51 +50,50 @@ void FCFS(Queue* wait_queue, Queue* ready_queue)
 
 void RR(Queue* wait_queue, Queue* ready_queue)
 {
-  int time = 0, quantum = 1;
+  int time = time_axis, time_flow = 0;
+  const int quantum = 1;
   xcur = start;
   ycur = 10;
   Process* current = NULL;
+  Process* head = NULL;
+  
   setCursorMove(xcur,ycur);
   
-  // DEBUG
-  Process* head = NULL;
   // RR 찍기 
-  while(time <= total_service_time && wait_queue->head != NULL)
-  {
-  /*  // 나타난 프로세스를 순차적으로 큐에 삽입
-    // 단 wait_queue 상태는 도착 시간대로 정렬 되어있다고 가정
-    while(time >= wait_queue->head->arrival_time && wait_queue->head != NULL)
+  while(time <= total_service_time+time_axis)
+  { 
+   while(wait_queue->head != NULL)
+   {
+     if(wait_queue->head->arrival_time <= time)
       push(ready_queue, pop(wait_queue));
-    
-    for(head= ready_queue->head; head!=NULL;head=head->next)
-      printf("%c",head->name);
-    // 준비 큐에서 프로세스 꺼내서 실행시킴
-    current = pop(ready_queue);
-       // 프로세스가 실행될 게 남아있을 경우
-    if(current->service_time >= quantum )
-    {
-      printService(current->order, quantum);
-      // 프로세스 남은 실행시간 갱신
-      current->service_time -= quantum;
-      push(ready_queue,current);
-    }
-    else
-    {
-      printService(current->order,current->service_time);
-      free(current);
-    }
-    */
-    time += quantum;
+     else
+       break;
+   }
+
+   if(ready_queue->head != NULL)
+   {
+     current = pop(ready_queue);
+     time_flow = current->service_time < quantum ? current->service_time : quantum;
+     printService(current->order,time_flow);
+     current->service_time -= quantum;
+
+     if(current->service_time <= 0)
+       free(current);
+     else
+       push(ready_queue,current);
+   }
+   time += time_flow;
   }
 }
 
 void HRRN(Queue* wait_queue, Queue* ready_queue)
 {
+  int time = time_axis;
   xcur = start;
   ycur = 17;
   setCursorMove(xcur,ycur);
   /* HRRN 찍기 */
-  printf("HRRN 우와와와와");
+  printService(1,2);
   /* HRRN 찍기 */
   printf("\n");
 }

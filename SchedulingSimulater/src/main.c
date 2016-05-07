@@ -9,11 +9,11 @@ typedef struct Scheduling_Policy
 void default_wait_queue(Queue* wait_queue)
 {
  // +additional : 프로세스 삽입 방식 개선.. 
-  push(wait_queue,new_Process('A',0,3,0));
+  push(wait_queue,new_Process('A',1,3,0));
   push(wait_queue,new_Process('B',2,6,1));
   push(wait_queue,new_Process('C',4,4,2));
-  push(wait_queue,new_Process('D',6,5,3));
-  push(wait_queue,new_Process('E',8,2,4));
+  push(wait_queue,new_Process('D',10,5,3));
+  push(wait_queue,new_Process('E',17,2,4));
 }
 
 int main(void)
@@ -23,7 +23,7 @@ int main(void)
   Queue *ready_queue = new_Queue();
   Queue *wait_queue = new_Queue();
   
-  int i = 0,time_axis = 0;
+  int i = 0, j = 0;
   int policy_count = sizeof(simulater)/sizeof(Scheduling_Policy);
   int process_count = 5;
  
@@ -32,9 +32,9 @@ int main(void)
 
   if(ready_queue == NULL || wait_queue == NULL)
     return;
-  
   default_wait_queue(wait_queue);
  
+  time_axis = wait_queue->head->arrival_time; 
   // 모든 프로세스  수행 시간
   for(head = wait_queue->head ; head!=NULL; head = head->next)
     total_service_time += head->service_time;
@@ -48,8 +48,8 @@ int main(void)
     // 스케줄링 정책 이름
     printf("%s\t",simulater[i].name);
     // 시간 축 출력
-    for(time_axis = 0; time_axis<total_service_time+1; time_axis++)
-      printf("%-8d",time_axis);
+    for(j = time_axis; j <total_service_time+time_axis; j++)
+      printf("%-8d",j);
     printf("\n");
 
     for(head = wait_queue->head; head!=NULL; head = head->next)
