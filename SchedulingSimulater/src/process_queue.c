@@ -46,6 +46,7 @@ void push(Queue* target, Process* new)
   }
   target->tail->next = new;
   target->tail = target->tail->next;
+  target->tail->next = NULL;
 }
 // 큐 생성, 실패시 NULL 리턴
 Queue* new_Queue()
@@ -70,6 +71,7 @@ Process* new_Process(char name, int arrival_time, int service_time, int order)
   new->arrival_time = arrival_time;
   new->service_time = service_time;
   new->order = order;
+  new->next = NULL;
   return new;
 }
 

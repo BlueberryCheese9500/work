@@ -38,7 +38,7 @@ int main(void)
   // 모든 프로세스  수행 시간
   for(head = wait_queue->head ; head!=NULL; head = head->next)
     total_service_time += head->service_time;
- 
+
   system("clear");
   printf("<Scheduling Simulater>\n");
   printf("policy / time\n");
@@ -56,12 +56,12 @@ int main(void)
       printf("%c\n",head->name);    
     printf("\n");
   }
-
+   
   // 스케줄링 정책 모두 실행
-  for(i=0; i<policy_count;i++)
+  for(i=0; i < policy_count ;i++)
   {
+    simulater[0].scheduling(wait_queue, ready_queue);
     default_wait_queue(wait_queue);
-    simulater[i].scheduling(wait_queue, ready_queue);
   }
   // 커서 제자리에
   setCursorMove(0,25);
