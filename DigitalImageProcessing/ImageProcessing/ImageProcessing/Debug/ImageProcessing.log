@@ -1,0 +1,33 @@
+﻿빌드 시작: 2016-09-28 오후 1:40:42
+     1>2 노드의 "C:\Users\DB400T6A\Desktop\ImageProcessing\ImageProcessing\ImageProcessing.vcxproj" 프로젝트(Build 대상)입니다.
+     1>ClCompile:
+         C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\ImageProcessing.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ChildFrm.cpp DownSampleDlg.cpp ImageProcessing.cpp ImageProcessingDoc.cpp ImageProcessingView.cpp MainFrm.cpp QuantizationDlg.cpp UpSampleDlg.cpp
+         ImageProcessingView.cpp
+         ImageProcessingDoc.cpp
+         코드를 생성하고 있습니다...
+         건너뛰고 있습니다... (관련된 변경 내용 없음)
+         UpSampleDlg.cpp
+         QuantizationDlg.cpp
+         MainFrm.cpp
+         DownSampleDlg.cpp
+         ChildFrm.cpp
+         ImageProcessing.cpp
+       ResourceCompile:
+         C:\Program Files\Windows Kits\8.0\bin\x86\rc.exe /D _DEBUG /D _AFXDLL /l"0x0412" /IDebug\ /nologo /fo"Debug\ImageProcessing.res" ImageProcessing.rc 
+       Link:
+         C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\DB400T6A\Desktop\ImageProcessing\Debug\ImageProcessing.exe" /INCREMENTAL /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files\Microsoft Visual Studio 11.0\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:"C:\Users\DB400T6A\Desktop\ImageProcessing\Debug\ImageProcessing.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\DB400T6A\Desktop\ImageProcessing\Debug\ImageProcessing.lib" /MACHINE:X86 Debug\ImageProcessing.res
+         Debug\ChildFrm.obj
+         Debug\DownSampleDlg.obj
+         Debug\ImageProcessing.obj
+         Debug\ImageProcessingDoc.obj
+         Debug\ImageProcessingView.obj
+         Debug\MainFrm.obj
+         Debug\QuantizationDlg.obj
+         Debug\stdafx.obj
+         Debug\UpSampleDlg.obj
+         ImageProcessing.vcxproj -> C:\Users\DB400T6A\Desktop\ImageProcessing\Debug\ImageProcessing.exe
+     1>"C:\Users\DB400T6A\Desktop\ImageProcessing\ImageProcessing\ImageProcessing.vcxproj" 프로젝트를 빌드했습니다(Build 대상).
+
+빌드했습니다.
+
+경과 시간: 00:00:00.50
